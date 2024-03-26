@@ -26,7 +26,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 class CalculTest {
 
 	private Calcul calcul;
-
+	private String valueString;
 	private Logger logger;
 
 	public CalculTest() {
@@ -47,12 +47,14 @@ class CalculTest {
 	void setUp() throws Exception {
 		logger.info("Appel avant chaque test");
 		calcul = new Calcul();
+
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		logger.info("Appel après chaque test");
 		calcul = null;
+		valueString = null;
 	}
 
 	@Nested
@@ -63,14 +65,16 @@ class CalculTest {
 		@Test
 		@DisplayName("Vérifier si c'est non null")
 		void checkStringIsNullTest() {
-			assertThat("value").isNotNull();
+			valueString = "test";
+			assertThat(valueString).isNotNull();
 		}
 
 		@Disabled("This test is disabled because I'm not satisfied with the result")
 		@Test
 		@DisplayName("Vérifier si c'est null")
 		void checkStringIsNonNullTest() {
-			assertThat("").isNull();
+			valueString = "";
+			assertThat(valueString).isNull();
 		}
 
 	}

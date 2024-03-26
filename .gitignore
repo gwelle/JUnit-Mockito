@@ -1,3 +1,5 @@
 .classpath
 .project
 .settings/
+target/surefire-reports/
+target/sit≈e/
