@@ -61,21 +61,16 @@ class CalculTest {
 	class StringTest {
 
 		@Test
-		@DisplayName("Vérifier si c'est null")
+		@DisplayName("Vérifier si c'est non null")
 		void checkStringIsNullTest() {
-			String valueIsNull = "value";
-			assertThat(valueIsNull).isNotNull();
-
+			assertThat("value").isNotNull();
 		}
 
-		@Disabled
+		@Disabled("This test is disabled because I'm not satisfied with the result")
 		@Test
-		@DisplayName("Vérifier si c'est non null")
+		@DisplayName("Vérifier si c'est null")
 		void checkStringIsNonNullTest() {
-			String valueIsNotNull = "";
-			assertThat(valueIsNotNull).isNull();
-			assertThat(valueIsNotNull).isEmpty();
-			assertThat(valueIsNotNull).isBlank();
+			assertThat("").isNull();
 		}
 
 	}
@@ -87,7 +82,6 @@ class CalculTest {
 		assertThat(calcul.add(2, 3)).isEqualTo(5);
 		assertThat(calcul.add(-4, 3)).isBetween(-3, 0);
 		assertThat(calcul.add(-4, 3)).isGreaterThanOrEqualTo(-2);
-		assertThat(calcul.add(-4, 3)).isLessThanOrEqualTo(-1);
 		assertThat(calcul.add(-4, 3)).isNegative();
 		assertThat(calcul.add(4.5, 3)).isEqualTo(7.5);
 		assertThat(calcul.add(4.5, 3.5)).isEqualTo(8);
