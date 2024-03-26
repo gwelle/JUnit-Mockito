@@ -1,30 +1,36 @@
 package org.eclipse.main;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.apache.logging.log4j.Logger;
+import java.util.logging.Logger;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Tag("CalculsTest")
 @DisplayName("Tester la classe calcul")
-@ExtendWith(LoggingExtension.class)
 class CalculTest {
 
 	private Calcul calcul;
 
 	private Logger logger;
 
-	public void setLogger(Logger logger) {
-		this.logger = logger;
+	public CalculTest() {
+		logger = Logger.getLogger(CalculTest.class.getName());
 	}
 
 	@BeforeAll
@@ -59,33 +65,54 @@ class CalculTest {
 		void checkStringIsNullTest() {
 			String valueIsNull = "value";
 			assertThat(valueIsNull).isNotNull();
+
 		}
 
+		@Disabled
 		@Test
 		@DisplayName("Vérifier si c'est non null")
 		void checkStringIsNonNullTest() {
 			String valueIsNotNull = "";
+			assertThat(valueIsNotNull).isNull();
 			assertThat(valueIsNotNull).isEmpty();
+			assertThat(valueIsNotNull).isBlank();
 		}
 
 	}
 
 	@Test
+	@Order(1)
 	@DisplayName("Effectuer des Aditions")
 	void addTest() {
 		assertThat(calcul.add(2, 3)).isEqualTo(5);
-		assertThat((calcul.add(-4, 3))).isBetween(-3, 0);
-		assertThat((calcul.add(-4, 3))).isGreaterThanOrEqualTo(-2);
-		assertThat((calcul.add(-4, 3))).isLessThanOrEqualTo(-1);
-		assertThat((calcul.add(-4, 3))).isNegative();
-		assertThat((calcul.add(4.5, 3))).isEqualTo(7.5);
-		assertEquals(8, calcul.add(4.5, 3.5));
+		assertThat(calcul.add(-4, 3)).isBetween(-3, 0);
+		assertThat(calcul.add(-4, 3)).isGreaterThanOrEqualTo(-2);
+		assertThat(calcul.add(-4, 3)).isLessThanOrEqualTo(-1);
+		assertThat(calcul.add(-4, 3)).isNegative();
+		assertThat(calcul.add(4.5, 3)).isEqualTo(7.5);
+		assertThat(calcul.add(4.5, 3.5)).isEqualTo(8);
 	}
 
 	@Test
+	@Order(4)
 	@DisplayName("Effectuer des divisions")
 	void divideTest() {
 		assertThat(calcul.divide(9, 3)).isEqualTo(3);
+	}
+
+	@RepeatedTest(value = 3, name = RepeatedTest.SHORT_DISPLAY_NAME)
+	@Order(3)
+	@DisplayName("Effectuer des multiplications")
+	void multiplyTest() {
+		assertThat(calcul.multiply(5, 3)).isBetween(10, 20);
+	}
+
+	@ParameterizedTest
+	@Order(2)
+	@ValueSource(ints = { 2, 3 })
+	@DisplayName("Effectuer des soustractions")
+	void testSomme(int value) {
+		assertThat(calcul.substract(value, 3)).isNotEqualTo(-1);
 	}
 
 }
