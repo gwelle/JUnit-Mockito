@@ -82,7 +82,7 @@ class CalculTest {
 	@Test
 	@Order(1)
 	@DisplayName("Effectuer des Aditions")
-	void addTest() {
+	void givenTwoIntegers_whenAdded_thenTheyShouldBeSummed() {
 		assertThat(calcul.add(2, 3)).isEqualTo(5);
 		assertThat(calcul.add(-4, 3)).isBetween(-3, 0);
 		assertThat(calcul.add(-4, 3)).isGreaterThanOrEqualTo(-2);
@@ -94,14 +94,14 @@ class CalculTest {
 	@Test
 	@Order(4)
 	@DisplayName("Effectuer des divisions")
-	void divideTest() {
+	void givenTwoPostiveIntegers_whenDivided_thenTheyShouldBeSummed() {
 		assertThat(calcul.divide(9, 3)).isEqualTo(3);
 	}
 
 	@RepeatedTest(value = 3, name = RepeatedTest.SHORT_DISPLAY_NAME)
 	@Order(3)
 	@DisplayName("Effectuer des multiplications")
-	void multiplyTest() {
+	void givenTwoPostiveIntegers_whenMultiplied_thenTheyShouldBeSummed() {
 		assertThat(calcul.multiply(5, 3)).isBetween(10, 20);
 	}
 
@@ -109,7 +109,7 @@ class CalculTest {
 	@Order(2)
 	@ValueSource(ints = { 2, 3 })
 	@DisplayName("Effectuer des soustractions")
-	void testSomme(int value) {
+	void givenTwoPostiveIntegers_whenSubstracted_thenTheyShouldBeSummed(int value) {
 		assertThat(calcul.substract(value, 3)).isNotEqualTo(-1);
 	}
 
