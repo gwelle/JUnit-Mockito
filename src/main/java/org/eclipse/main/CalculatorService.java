@@ -1,30 +1,16 @@
 package org.eclipse.main;
 
-public class Calcul {
+public interface CalculatorService {
 
-	public int add(int a, int b) {
-		return a + b;
-	}
+	public int add(int a, int b);
 
-	public int substract(int a, int b) {
-		return (a > b ? a - b : b - a);
-	}
+	public int substract(int a, int b);
 
-	public int multiply(int a, int b) {
-		return a * b;
-	}
+	public int multiply(int a, int b);
 
-	public double add(double a, double b) {
-		return a + b;
-	}
+	public double add(double a, double b);
 
-	public double multiply(double a, double b) {
-		return a * b;
-	}
+	public double multiply(double a, double b);
 
-	public int divide(int x, int y) {
-		if (y == 0)
-			throw new ArithmeticException();
-		return x / y;
-	}
+	public int divide(int x, int y);
 }
