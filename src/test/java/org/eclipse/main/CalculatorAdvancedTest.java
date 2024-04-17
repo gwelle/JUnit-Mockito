@@ -1,6 +1,7 @@
 package org.eclipse.main;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.atMost;
 import static org.mockito.Mockito.times;
@@ -12,12 +13,14 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+@Tag("CalculatorAdvancedTest")
 @ExtendWith(MockitoExtension.class)
 class CalculatorAdvancedTest {
 
@@ -105,6 +108,20 @@ class CalculatorAdvancedTest {
 		verify(calculatorService, atMost(1)).multiply(2, 3);
 
 		assertThat(result).isEqualTo(6);
+	}
+
+	@Test
+	@DisplayName("Divide")
+	public void calculate_shouldThrowIllegalArgumentException_forADivisionBy0() {
+
+		// GIVEN
+		when(calculatorService.divide(1, 0)).thenThrow(new ArithmeticException());
+
+		// WHEN
+		assertThatThrownBy(() -> calculatorService.divide(1, 0)).isInstanceOf(ArithmeticException.class);
+
+		// THEN
+		verify(calculatorService, times(1)).divide(1, 0);
 	}
 
 }
