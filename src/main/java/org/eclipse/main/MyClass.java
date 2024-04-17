@@ -15,4 +15,8 @@ public class MyClass {
 		return list;
 	}
 
+	public int add(int a, int b) {
+		return (a > b ? a + b : b + a);
+	}
+
 }

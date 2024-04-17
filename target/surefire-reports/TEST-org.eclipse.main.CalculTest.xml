@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.eclipse.main.CalculTest" time="0.212" tests="9" errors="0" skipped="1" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.eclipse.main.CalculTest" time="0.206" tests="9" errors="0" skipped="1" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="FR"/>
     <property name="sun.boot.library.path" value="/usr/local/Cellar/openjdk/21.0.1/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/guillaumewelle/eclipse-jee-workspace/cours-junit-maven/target/surefire/surefirebooter12266514062153962822.jar /Users/guillaumewelle/eclipse-jee-workspace/cours-junit-maven/target/surefire 2024-03-26T12-16-31_385-jvmRun1 surefire5053500717186111997tmp surefire_01667181414532489119tmp"/>
+    <property name="sun.java.command" value="/Users/guillaumewelle/eclipse-jee-workspace/cours-junit-maven/target/surefire/surefirebooter3646764240734640288.jar /Users/guillaumewelle/eclipse-jee-workspace/cours-junit-maven/target/surefire 2024-03-26T12-40-15_104-jvmRun1 surefire110815601404938476tmp surefire_015018306086132389070tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/guillaumewelle/eclipse-jee-workspace/cours-junit-maven/target/test-classes:/Users/guillaumewelle/eclipse-jee-workspace/cours-junit-maven/target/classes:/Users/guillaumewelle/.m2/repository/junit/junit/4.11/junit-4.11.jar:/Users/guillaumewelle/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/guillaumewelle/.m2/repository/org/junit/platform/junit-platform-runner/1.9.3/junit-platform-runner-1.9.3.jar:/Users/guillaumewelle/.m2/repository/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.jar:/Users/guillaumewelle/.m2/repository/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.jar:/Users/guillaumewelle/.m2/repository/org/junit/platform/junit-platform-suite-api/1.9.3/junit-platform-suite-api-1.9.3.jar:/Users/guillaumewelle/.m2/repository/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.jar:/Users/guillaumewelle/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/guillaumewelle/.m2/repository/org/junit/platform/junit-platform-suite-commons/1.9.3/junit-platform-suite-commons-1.9.3.jar:/Users/guillaumewelle/.m2/repository/org/junit/jupiter/junit-jupiter/5.9.3/junit-jupiter-5.9.3.jar:/Users/guillaumewelle/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.3/junit-jupiter-api-5.9.3.jar:/Users/guillaumewelle/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/guillaumewelle/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.3/junit-jupiter-params-5.9.3.jar:/Users/guillaumewelle/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.3/junit-jupiter-engine-5.9.3.jar:/Users/guillaumewelle/.m2/repository/org/assertj/assertj-core/3.13.2/assertj-core-3.13.2.jar:/Users/guillaumewelle/.m2/repository/org/apache/logging/log4j/log4j-core/2.12.1/log4j-core-2.12.1.jar:/Users/guillaumewelle/.m2/repository/org/apache/logging/log4j/log4j-api/2.12.1/log4j-api-2.12.1.jar:"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/guillaumewelle/eclipse-jee-workspace/cours-junit-maven/target/surefire/surefirebooter12266514062153962822.jar"/>
+    <property name="surefire.real.class.path" value="/Users/guillaumewelle/eclipse-jee-workspace/cours-junit-maven/target/surefire/surefirebooter3646764240734640288.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="21.0.1"/>
@@ -59,12 +59,12 @@
     <property name="java.class.version" value="65.0"/>
   </properties>
   <testcase name="addTest" classname="org.eclipse.main.CalculTest" time="0.108"/>
-  <testcase name="testSomme{int}[1]" classname="org.eclipse.main.CalculTest" time="0.03"/>
-  <testcase name="testSomme{int}[2]" classname="org.eclipse.main.CalculTest" time="0.002"/>
+  <testcase name="testSomme{int}[1]" classname="org.eclipse.main.CalculTest" time="0.027"/>
+  <testcase name="testSomme{int}[2]" classname="org.eclipse.main.CalculTest" time="0.004"/>
   <testcase name="multiplyTest[1]" classname="org.eclipse.main.CalculTest" time="0.002"/>
-  <testcase name="multiplyTest[2]" classname="org.eclipse.main.CalculTest" time="0.002"/>
+  <testcase name="multiplyTest[2]" classname="org.eclipse.main.CalculTest" time="0.003"/>
   <testcase name="multiplyTest[3]" classname="org.eclipse.main.CalculTest" time="0.002"/>
-  <testcase name="divideTest" classname="org.eclipse.main.CalculTest" time="0.002"/>
+  <testcase name="divideTest" classname="org.eclipse.main.CalculTest" time="0.001"/>
   <testcase name="checkStringIsNonNullTest" classname="org.eclipse.main.CalculTest$StringTest" time="0">
     <skipped message="void org.eclipse.main.CalculTest$StringTest.checkStringIsNonNullTest() is @Disabled"/>
   </testcase>

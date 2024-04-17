@@ -23,14 +23,14 @@ import org.junit.jupiter.params.provider.ValueSource;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Tag("CalculsTest")
 @DisplayName("Tester la classe calcul")
-class CalculTest {
+class CalculatorTest {
 
-	private Calcul calcul;
+	private Calculator calcul;
 	private String valueString;
 	private Logger logger;
 
-	public CalculTest() {
-		logger = Logger.getLogger(CalculTest.class.getName());
+	public CalculatorTest() {
+		logger = Logger.getLogger(CalculatorTest.class.getName());
 	}
 
 	@BeforeAll
@@ -46,7 +46,7 @@ class CalculTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		logger.info("Appel avant chaque test");
-		calcul = new Calcul();
+		calcul = new Calculator();
 
 	}
 

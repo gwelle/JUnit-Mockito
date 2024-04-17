@@ -1,6 +1,9 @@
 package org.eclipse.main;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.atLeast;
+import static org.mockito.Mockito.atMost;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -12,6 +15,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
@@ -33,8 +37,6 @@ class CalculatorAdvancedTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-
-		// calculatorService = mock(CalculatorService.class);
 		calculator = new Calculator(calculatorService);
 	}
 
@@ -74,7 +76,7 @@ class CalculatorAdvancedTest {
 		// THEN
 		// Vérifier que le service a bien appelé CalculatorService
 		// avec les bon arguments
-		verify(calculatorService).add(2.5, 3.5);
+		verify(calculatorService).add(Mockito.anyDouble(), Mockito.anyDouble());
 		assertThat(result).isEqualTo(6);
 	}
 
@@ -92,6 +94,16 @@ class CalculatorAdvancedTest {
 		// Vérifier que le service a bien appelé CalculatorService
 		// avec les bon arguments
 		verify(calculatorService).multiply(2, 3);
+
+		// Vérifier que multiply(2,3) a été appelée 1 fois
+		verify(calculatorService, times(1)).multiply(2, 3);
+
+		// Vérifier que multiply(2,3) a été appelée au moins 1 fois
+		verify(calculatorService, atLeast(1)).multiply(2, 3);
+
+		// Vérifier que multiply(2,3) a été appelée au plus 1 fois
+		verify(calculatorService, atMost(1)).multiply(2, 3);
+
 		assertThat(result).isEqualTo(6);
 	}
 
