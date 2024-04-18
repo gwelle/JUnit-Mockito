@@ -124,4 +124,20 @@ class CalculatorAdvancedTest {
 		verify(calculatorService, times(1)).divide(1, 0);
 	}
 
+	@Test
+	@DisplayName("Substact")
+	void givenTwoIntegers_whenSubstracted_thenTheyShouldBeSummed() {
+
+		when(calculatorService.substract(Mockito.anyInt(), Mockito.anyInt())).thenAnswer((invocation) -> {
+			System.out.println(" invocation : " + invocation);
+			System.out.println(" invocation.getMock() : " + invocation.getMock());
+			Integer number0ne = invocation.getArgument(0);
+			Integer numberTwo = invocation.getArgument(1);
+			System.out.println(" Number one : " + number0ne);
+			System.out.println(" Number two : " + numberTwo);
+			return number0ne - numberTwo;
+		});
+		assertThat(calculatorService.substract(3, 2)).isEqualTo(1);
+
+	}
 }
