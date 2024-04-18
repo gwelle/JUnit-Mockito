@@ -16,6 +16,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -29,6 +30,8 @@ class CalculatorAdvancedTest {
 	@Mock
 	private CalculatorService calculatorService;
 	int result = 0;
+	Integer number0ne = 0;
+	Integer numberTwo = 0;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -47,6 +50,8 @@ class CalculatorAdvancedTest {
 	void tearDown() throws Exception {
 		result = 0;
 		calculator = null;
+		number0ne = 0;
+		numberTwo = 0;
 	}
 
 	@Test
@@ -91,7 +96,7 @@ class CalculatorAdvancedTest {
 		when(calculatorService.multiply(2, 3)).thenReturn(6);
 
 		// WHEN
-		int result = calculatorService.multiply(2, 3);
+		result = calculatorService.multiply(2, 3);
 
 		// THEN
 		// Vérifier que le service a bien appelé CalculatorService
@@ -129,15 +134,36 @@ class CalculatorAdvancedTest {
 	void givenTwoIntegers_whenSubstracted_thenTheyShouldBeSummed() {
 
 		when(calculatorService.substract(Mockito.anyInt(), Mockito.anyInt())).thenAnswer((invocation) -> {
-			System.out.println(" invocation : " + invocation);
-			System.out.println(" invocation.getMock() : " + invocation.getMock());
-			Integer number0ne = invocation.getArgument(0);
-			Integer numberTwo = invocation.getArgument(1);
-			System.out.println(" Number one : " + number0ne);
-			System.out.println(" Number two : " + numberTwo);
+			number0ne = invocation.getArgument(0);
+			numberTwo = invocation.getArgument(1);
 			return number0ne - numberTwo;
 		});
 		assertThat(calculatorService.substract(3, 2)).isEqualTo(1);
+	}
 
+	@Test
+	@DisplayName("Substact with argument captor")
+	void givenTwoNumbers_whenSubstracted_thenTheyShouldBeSummed() {
+
+		// GIVEN
+		// Déclarer un capteur d’argument de type Integer
+		ArgumentCaptor<Integer> captor = ArgumentCaptor.forClass(Integer.class);
+
+		when(calculatorService.substract(Mockito.anyInt(), Mockito.anyInt())).thenAnswer(invocation -> {
+			number0ne = invocation.getArgument(0);
+			numberTwo = invocation.getArgument(1);
+			return number0ne - numberTwo;
+		});
+
+		// WHEN
+		result = calculatorService.substract(6, 3);
+
+		// THEN
+		// captor.capture() => permet de capturer les arguments de type entier.
+		// captor.getAllValues() => retourne les arguments captures de type entier
+		assertThat(result).isEqualTo(3);
+		verify(calculatorService, times(1)).substract(captor.capture(), captor.capture());
+		assertThat(captor.getAllValues().get(0)).isEqualTo(6);
+		assertThat(captor.getAllValues().get(1)).isEqualTo(3);
 	}
 }
